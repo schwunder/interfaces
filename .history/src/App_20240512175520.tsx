@@ -25,24 +25,22 @@ const tree: TreeNode = {
   ],
 };
 
-function mapTreeNodeToAccordionVariant(tree: TreeNode) {
+function mapTreeNodeToAccordion(tree: TreeNode) {
   return (
     <Accordion type="single" collapsible className="w-full">
       {tree.children?.map((child, index) => (
         <AccordionItem key={index} value={`item-${index}`}>
           <AccordionTrigger>{child.value}</AccordionTrigger>
-
-          {child.children?.map((grandchild, subIndex) => (
-            <AccordionContent key={subIndex}>
+          <AccordionContent>
+            {child.children?.map((grandchild, subIndex) => (
               <Button
-                onClick={() =>
-                  console.log(`${index} father and ${subIndex} son`)
-                }
+                onClick={() => console.log(`${index} father`)}
+                key={subIndex}
               >
                 {grandchild.value}
               </Button>
-            </AccordionContent>
-          ))}
+            ))}
+          </AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>
@@ -52,7 +50,7 @@ function mapTreeNodeToAccordionVariant(tree: TreeNode) {
 function App() {
   return (
     <div className="flex items-center justify-center h-screen">
-      {mapTreeNodeToAccordionVariant(tree)}
+      {mapTreeNodeToAccordion(tree)}
     </div>
   );
 }

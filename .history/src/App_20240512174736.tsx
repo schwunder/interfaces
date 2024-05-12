@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "./components/ui/button";
 
 interface TreeNode {
   value: string;
@@ -25,24 +24,17 @@ const tree: TreeNode = {
   ],
 };
 
-function mapTreeNodeToAccordionVariant(tree: TreeNode) {
+function mapTreeNodeToAccordion(tree: TreeNode) {
   return (
     <Accordion type="single" collapsible className="w-full">
       {tree.children?.map((child, index) => (
         <AccordionItem key={index} value={`item-${index}`}>
           <AccordionTrigger>{child.value}</AccordionTrigger>
-
-          {child.children?.map((grandchild, subIndex) => (
-            <AccordionContent key={subIndex}>
-              <Button
-                onClick={() =>
-                  console.log(`${index} father and ${subIndex} son`)
-                }
-              >
-                {grandchild.value}
-              </Button>
-            </AccordionContent>
-          ))}
+          <AccordionContent>
+            {child.children?.map((grandchild, subIndex) => (
+              <div key={subIndex}>{grandchild.value}</div>
+            ))}
+          </AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>
@@ -52,7 +44,7 @@ function mapTreeNodeToAccordionVariant(tree: TreeNode) {
 function App() {
   return (
     <div className="flex items-center justify-center h-screen">
-      {mapTreeNodeToAccordionVariant(tree)}
+      {mapTreeNodeToAccordion(tree)}
     </div>
   );
 }

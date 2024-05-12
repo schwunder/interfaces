@@ -25,6 +25,30 @@ const tree: TreeNode = {
   ],
 };
 
+function mapTreeNodeToAccordion(tree: TreeNode) {
+  return (
+    <Accordion type="single" collapsible className="w-full">
+      {tree.children?.map((child, index) => (
+        <AccordionItem key={index} value={`item-${index}`}>
+          <AccordionTrigger>{child.value}</AccordionTrigger>
+          <AccordionContent>
+            {child.children?.map((grandchild, subIndex) => (
+              <Button
+                onClick={() =>
+                  console.log(`${index} father and ${subIndex} son`)
+                }
+                key={subIndex}
+              >
+                {grandchild.value}
+              </Button>
+            ))}
+          </AccordionContent>
+        </AccordionItem>
+      ))}
+    </Accordion>
+  );
+}
+
 function mapTreeNodeToAccordionVariant(tree: TreeNode) {
   return (
     <Accordion type="single" collapsible className="w-full">
