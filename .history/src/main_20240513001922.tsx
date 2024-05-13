@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "../app/globals.css";
-import "katex/dist/katex.min.css";
-
 // import { MDXProvider } from "@mdx-js/react";
 import Hello from "./helloworld.mdx";
 

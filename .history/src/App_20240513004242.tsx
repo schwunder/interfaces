@@ -10,10 +10,7 @@ const md = `
 
 The quadratic equation is used to solve equations of the form:
 
-$$
-ax^2 + bx + c = 0
-$$
- what do you mean
+$$ ax^2 + bx + c = 0 $$ what do you mean
 
 $$
 bb = 0
@@ -60,7 +57,7 @@ function App() {
         // Use a component instead of hrs
         code(props) {
           console.log("props", props);
-          const { children, className } = props;
+          const { children, className, node } = props;
           if (className === "language-math math-display") {
             return <InlineMath>{children}</InlineMath>;
           }

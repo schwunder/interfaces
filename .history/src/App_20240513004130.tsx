@@ -10,22 +10,10 @@ const md = `
 
 The quadratic equation is used to solve equations of the form:
 
-$$
-ax^2 + bx + c = 0
-$$
- what do you mean
-
-$$
-bb = 0
-$$
+$$ ax^2 + bx + c = 0 $$ what do you mean $$ bb = 0 $$
 
 
 The solution is given by the equation:
-
-
-DOENS"T WORK YET??
-$$ ax^2 + bx + c = 0 $$ what do you mean $$ bb = 0$$
-
 
 ## GitHub flavored markdown (GFM)
 
@@ -65,7 +53,7 @@ function App() {
             return <InlineMath>{children}</InlineMath>;
           }
 
-          return <code {...props.rest} />;
+          return <code {...props} />;
         },
       }}
     />

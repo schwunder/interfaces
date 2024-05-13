@@ -2,11 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "../app/globals.css";
-import "katex/dist/katex.min.css";
-
-// import { MDXProvider } from "@mdx-js/react";
+import { MDXProvider } from "@mdx-js/react";
 import Hello from "./helloworld.mdx";
-
 //import { mdx } from "@mdx-js/react";
 
 const components = {
@@ -22,10 +19,10 @@ export const Post = () => {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    {/* <MDXProvider components={components}> */}
-    <Post />
-    <Hello />
-    <App />
-    {/* </MDXProvider> */}
+    <MDXProvider components={components}>
+      <Post />
+      <Hello />
+      <App />
+    </MDXProvider>
   </React.StrictMode>
 );

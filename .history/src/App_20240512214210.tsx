@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 export const dynamic = "force-dynamic";
-import { InlineMath, BlockMath } from "react-katex";
+
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
@@ -13,19 +13,10 @@ The quadratic equation is used to solve equations of the form:
 $$
 ax^2 + bx + c = 0
 $$
- what do you mean
 
-$$
-bb = 0
-$$
-
+where $a$, $b$, and $c$ are constants, and $a \ne 0$.
 
 The solution is given by the equation:
-
-
-DOENS"T WORK YET??
-$$ ax^2 + bx + c = 0 $$ what do you mean $$ bb = 0$$
-
 
 ## GitHub flavored markdown (GFM)
 
@@ -52,20 +43,15 @@ function App() {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkMath, remarkGfm]}
-      // rehypePlugins={[rehypeKatex]}
+      rehypePlugins={[rehypeKatex]}
       children={md}
       components={{
         // Use h2s instead of h1s
         h1: "h2",
         // Use a component instead of hrs
-        code(props) {
-          console.log("props", props);
-          const { children, className } = props;
-          if (className === "language-math math-display") {
-            return <InlineMath>{children}</InlineMath>;
-          }
-
-          return <code {...props.rest} />;
+        span(props) {
+          const { node, ...rest } = props;
+          return <h3 {...rest} />;
         },
       }}
     />

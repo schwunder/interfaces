@@ -5,13 +5,14 @@ import mdx from "@mdx-js/rollup";
 
 export default defineConfig({
   plugins: [
-    react({
-      exclude: "**/*.mdx", // Exclude MDX files from the standard React plugin
-    }),
-    mdx({
-      jsxImportSource: "@mdx-js/react", // Ensures MDX uses the correct import source for JSX
-      // other MDX options
-    }),
+    {
+      enforce: "pre",
+      ...mdx({
+        jsxImportSource: "@mdx-js/react", // Ensure MDX uses the correct import source for JSX
+        // other MDX options
+      }),
+    },
+    react({ include: /\.(jsx|js|mdx|md|tsx|ts)$/ }),
   ],
   resolve: {
     alias: {
